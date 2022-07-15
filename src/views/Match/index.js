@@ -1,6 +1,6 @@
-import {FlatList, Image, SafeAreaView, StyleSheet, Text, View} from "react-native";
+import {FlatList, TouchableOpacity, Image, SafeAreaView, StyleSheet, Text, View} from "react-native";
 
-function Match() {
+function Match({navigation}) {
     const DATA = [
         {
             id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
@@ -86,45 +86,49 @@ function Match() {
     ];
 
     const renderItem = ({ item }) => (
-        <View style={styles.flatlist}>
-            <View style={{flex: 0, flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
-                <Image
-                    style={{
-                        alignSelf: 'center',
-                        height: 75,
-                        width: 75,
-                        marginLeft: 5,
-                        borderRadius: 5
-                    }}
-                    source={require("../../../assets/random.png")}
-                />
-                <Text>{"Random"}</Text>
+        <TouchableOpacity
+            onPress={() => navigation.navigate("MatchDetail")}
+            >
+            <View style={styles.flatlist}>
+                <View style={{flex: 0, flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
+                    <Image
+                        style={{
+                            alignSelf: 'center',
+                            height: 75,
+                            width: 75,
+                            marginLeft: 5,
+                            borderRadius: 5
+                        }}
+                        source={require("../../../assets/random.png")}
+                    />
+                    <Text>{"Random"}</Text>
+
+                </View>
+                <View style={{flex: 1, flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
+                    <Text style={styles.title}>{item.title}</Text>
+                    <Text style={styles.title}>{item.district}</Text>
+                    <Text style={styles.title}>{item.location}</Text>
+                    <Text style={styles.title}>{item.size}</Text>
+                    <Text style={styles.time}>{item.date}</Text>
+                    <Text style={styles.time}>{item.time}</Text>
+                    <Text style={styles.title}>{item.participant}</Text>
+                </View>
+                <View style={{flex: 0, flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
+                    <Image
+                        style={{
+                            alignSelf: 'center',
+                            height: 75,
+                            width: 75,
+                            marginRight: 5,
+                            borderRadius: 5
+                        }}
+                        source={require("../../../assets/random.png")}
+                    />
+                    <Text>{"Random"}</Text>
+                </View>
 
             </View>
-            <View style={{flex: 1, flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
-                <Text style={styles.title}>{item.title}</Text>
-                <Text style={styles.title}>{item.district}</Text>
-                <Text style={styles.title}>{item.location}</Text>
-                <Text style={styles.title}>{item.size}</Text>
-                <Text style={styles.time}>{item.date}</Text>
-                <Text style={styles.time}>{item.time}</Text>
-                <Text style={styles.title}>{item.participant}</Text>
-            </View>
-            <View style={{flex: 0, flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
-                <Image
-                    style={{
-                        alignSelf: 'center',
-                        height: 75,
-                        width: 75,
-                        marginRight: 5,
-                        borderRadius: 5
-                    }}
-                    source={require("../../../assets/random.png")}
-                />
-                <Text>{"Random"}</Text>
-            </View>
-
-        </View>
+        </TouchableOpacity>
     );
 
     return (
@@ -134,6 +138,11 @@ function Match() {
                 renderItem={renderItem}
                 keyExtractor={item => item.id}
             />
+            <TouchableOpacity
+                onPress={() => navigation.navigate("CreateMatch")}
+                style={styles.fab}>
+                <Text style={styles.fabIcon}>+</Text>
+            </TouchableOpacity>
         </SafeAreaView>
     );
 }
@@ -162,6 +171,22 @@ const styles = StyleSheet.create({
         fontSize: 16,
         textAlign: "center",
         fontFamily: "monospace"
+    },
+    fab: {
+        position: 'absolute',
+        width: 56,
+        height: 56,
+        alignItems: 'center',
+        justifyContent: 'center',
+        right: 30,
+        bottom: 30,
+        backgroundColor: 'rgba(52, 52, 52, 0.5)',
+        borderRadius: 30,
+        elevation: 8
+    },
+    fabIcon: {
+        fontSize: 40,
+        color: 'white'
     }
 });
 

@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 
-import {Match, Home, PreMatch} from './src/views'
+import {Match, Home, PreMatch, CreateMatch, MatchDetail} from './src/views'
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -30,6 +30,8 @@ function App() {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Matches" component={Match} />
         <Stack.Screen name="Preparation" component={PreMatch} />
+        <Stack.Screen name="CreateMatch"  component={CreateMatch} />
+        <Stack.Screen name="MatchDetail" component={MatchDetail} />
       </Stack.Navigator>
     </NavigationContainer>
   );
