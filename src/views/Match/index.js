@@ -87,7 +87,7 @@ function Match({navigation}) {
 
     const renderItem = ({ item }) => (
         <TouchableOpacity
-            onPress={() => navigation.navigate("MatchDetail")}
+            onPress={() => navigation.navigate("MatchDetail", {item: item })}
             >
             <View style={styles.flatlist}>
                 <View style={{flex: 0, flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>

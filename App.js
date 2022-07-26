@@ -7,12 +7,23 @@ import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import {Match, Home, PreMatch, CreateMatch, MatchDetail} from './src/views'
 
 const Tab = createBottomTabNavigator();
+const MatchStack = createNativeStackNavigator();
 const Stack = createNativeStackNavigator();
+
+function MatchStackScreen() {
+  return (
+    <MatchStack.Navigator>
+      <MatchStack.Screen name="Match" component={Match} />
+      <MatchStack.Screen name="MatchDetail" component={MatchDetail}/>
+      <MatchStack.Screen name="CreateMatch" component={CreateMatch}/>
+    </MatchStack.Navigator>
+  )
+}
 
 function HomeTab(){
     return(
         <Tab.Navigator>
-            <Tab.Screen name="Matches" component={Match}/>
+            <Tab.Screen options={{headerShown: false}} name="Matches" component={MatchStackScreen}/>
             <Tab.Screen name="Home" component={Home}/>
             <Tab.Screen name="Preparation" component={PreMatch}/>
         </Tab.Navigator>
